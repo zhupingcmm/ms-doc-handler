@@ -61,7 +61,11 @@ public class Word2PdfUtil {
             Document doc = new Document(wordPath);
             log.info("Try to save pdf file to: [{}]", pdfPath);
 
-
+            String defaultFontName = FontSettings.getDefaultFontName();
+            log.info("Before set F, [{}]", defaultFontName);
+            FontSettings.setFontsFolder("/root/pzhu/fonts", false);
+            defaultFontName = FontSettings.getDefaultFontName();
+            log.info("After set F, [{}]", defaultFontName);
             PdfSaveOptions saveOptions = new PdfSaveOptions();
             saveOptions.setSaveFormat(SaveFormat.PDF);
             saveOptions.setEmbedFullFonts(true);
